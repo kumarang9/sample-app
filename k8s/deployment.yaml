@@ -1,9 +1,9 @@
-Replace ACCOUNT_ID.
 apiVersion: apps/v1
 kind: Deployment
 
 metadata:
   name: sample-app
+  namespace: prod
 
 spec:
   replicas: 2
@@ -13,38 +13,14 @@ spec:
       app: sample-app
 
   template:
-
     metadata:
       labels:
         app: sample-app
 
     spec:
-
       containers:
-
       - name: sample-app
-
-        image: 592587463363.dkr.ecr.ap-south-1.amazonaws.com/sample-python-app:latest
-
+        image: 833082650443.dkr.ecr.ap-south-1.amazonaws.com/sample-python-app:latest
         imagePullPolicy: Always
-
         ports:
         - containerPort: 5000
-
-        env:
-
-        - name: DB_HOST
-          value: "appdb.cluster-chig6q4waact.ap-south-1.rds.amazonaws.com"
-
-        - name: DB_USER
-          value: "admin"
-
-        resources:
-
-          requests:
-            cpu: "100m"
-            memory: "128Mi"
-
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
